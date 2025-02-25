@@ -34,48 +34,48 @@
 // console.log(cat1.name, cat1.age, "years old");
 // cat1.eat();
 
-// Inheritance / Peawarisan
+// OOP Inheritance / Peawarisan
 // class SuperClass {}
 // class SubClass extends SuperClass {}
 
-// ES6 Class
-class SmartPhones {
-  constructor(color, brand, model) {
-    this.color = color;
-    this.brand = brand;
-    this.model = model;
-  }
+// Inheritance ES6 Class
+// class SmartPhones {
+//   constructor(color, brand, model) {
+//     this.color = color;
+//     this.brand = brand;
+//     this.model = model;
+//   }
 
-  charging() {
-    console.log(`Charging ${this.model}`);
-  }
-}
+//   charging() {
+//     console.log(`Charging ${this.model}`);
+//   }
+// }
 
-class iOS extends SmartPhones {
-  airDrop() {
-    console.log("IOS have a behavior AirDrop");
-  }
-}
+// class iOS extends SmartPhones {
+//   airDrop() {
+//     console.log("IOS have a behavior AirDrop");
+//   }
+// }
 
-class Android extends SmartPhones {
-  spiltScreen() {
-    console.log("Android have a Spilt Screen");
-  }
-}
+// class Android extends SmartPhones {
+//   spiltScreen() {
+//     console.log("Android have a Spilt Screen");
+//   }
+// }
 
-const ios = new iOS("gray", "Apple", "13 Pro Max");
-const android = new Android("blue", "Xiaomi", "Xiaomi 14 Pro");
+// const ios = new iOS("gray", "Apple", "13 Pro Max");
+// const android = new Android("blue", "Xiaomi", "Xiaomi 14 Pro");
 
-ios.charging();
-ios.airDrop();
+// ios.charging();
+// ios.airDrop();
 
-console.log(ios instanceof SmartPhones);
-console.log(android instanceof SmartPhones);
+// console.log(ios instanceof SmartPhones);
+// console.log(android instanceof SmartPhones);
 
 // android.charging();
 // android.spiltScreen();
 
-// Constructor function
+// Inheritance Constructor function
 // function SmartPhones(color, brand, model) {
 //   this.color = color;
 //   this.brand = brand;
@@ -118,3 +118,95 @@ console.log(android instanceof SmartPhones);
 // console.log(android instanceof SmartPhones);
 // android.charging();
 // android.splitScreen();
+
+// OOP Encapsulation
+// class CoffeMachine {
+//   constructor(waterAmount) {
+//     this.waterAmount = waterAmount;
+//     this.temperature = 90;
+//   }
+
+//   makeCoffe() {
+//     console.log("Membuat kopi dengan suhu", this.temperature, "derajat");
+//   }
+// }
+
+// const coffee = new CoffeMachine(100);
+// coffee.temperature = 90;
+// coffee.makeCoffe();
+
+// getter dan setter.
+// class CoffeMachine {
+//   constructor(waterAmount) {
+//     this.waterAmount = waterAmount;
+//     this._temperature = 90; // menandakan bahwa nilai temperature tidak dapat diubah
+//   }
+
+//   set temperature(temperature) {
+//     console.log("You are not allowed to change the temperatures");
+//   }
+//   get temperature() {
+//     return this._temperature;
+//   }
+// }
+
+// const coffee = new CoffeMachine(10);
+// console.log("Sebelum diubah", coffee.temperature);
+// coffee.temperature = 100;
+// console.log("Setelah diubah", coffee.temperature);
+
+// class CoffeMachine {
+//   #temperature = 90;
+//   constructor(waterAmount) {
+//     this.waterAmount = waterAmount;
+//     this.#temperature = this.#defaultTemperature();
+//   }
+//   set temperature(temperature) {
+//     console.log("you are not allowed to change the temperature");
+//   }
+//   get temperature() {
+//     return this.#temperature;
+//   }
+
+//   #defaultTemperature() {
+//     return 90;
+//   }
+// }
+
+// OOP Polymorphism
+// Overriding
+// Overriding Constructor
+// const android = new Android() // constructor di class Android akan dipanggil.
+
+class SmartPhones {
+  constructor(color, brand, model) {
+    this.color = color;
+    this.brand = brand;
+    this.model = model;
+  }
+
+  charging() {
+    console.log(`Charging ${this.model}`);
+  }
+}
+
+class Android extends SmartPhones {
+  constructor(color, brand, model, device) {
+    super(color, brand, model);
+    this.device = device;
+  }
+
+  charging() {
+    // memanggil method charging dari SuperClass (SmartPhones)
+    super.charging();
+    console.log(`Charging ${this.model} with fast charger`);
+  }
+
+  splitScreen() {
+    console.log("Android have a Split Screen");
+  }
+}
+
+const android = new Android("Gray", "Xiaomi", "Redmi Note 13", "Smart Tv");
+console.log(android);
+android.charging();
